@@ -1,0 +1,16 @@
+{
+    "[markdown]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.markdownlint": true
+        }
+    },
+    "[sql]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "mtxr.sqltools"
+    },
+    "sqltools.format": {
+        "reservedWordCase": "upper",
+        "language": "sql",
+        "linesBetweenQueries": 2
+    }
+}
