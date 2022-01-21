@@ -1,5 +1,46 @@
 -- data window
+SELECT quarter(payment_date) AS quarter_no,
+  monthname(payment_date) AS month_nm,
+  SUM(amount) AS monthly_total
+FROM payment
+WHERE year(payment_date) = 2005
+GROUP BY quarter(payment_date),
+  monthname(payment_date);
+
+SELECT quarter(payment_date) AS quarter_no,
+  monthname(payment_date) AS month_nm,
+  SUM(amount) AS monthly_total,
+  MAX(SUM(amount)) OVER () AS overall_max,
+  MAX(SUM(amount)) OVER (PARTITION BY quarter(payment_date)) AS quarterly_max
+FROM payment
+WHERE year(payment_date) = 2005
+GROUP BY quarter(payment_date),
+  monthname(payment_date);
+
 -- localized sorting
+SELECT quarter(payment_date) AS quarter_no,
+  monthname(payment_date) AS month_nm,
+  SUM(amount) AS monthly_total,
+  rank() OVER (
+    ORDER BY SUM(amount) DESC
+  ) AS sales_rank
+FROM payment
+WHERE year(payment_date) = 2005
+GROUP BY quarter(payment_date),
+  monthname(payment_date);
+
+SELECT quarter(payment_date) AS quarter_no,
+  monthname(payment_date) AS month_nm,
+  SUM(amount) AS monthly_total,
+  rank() OVER (
+    ORDER BY SUM(amount) DESC
+  ) AS sales_rank
+FROM payment
+WHERE year(payment_date) = 2005
+GROUP BY quarter(payment_date),
+  monthname(payment_date)
+ORDER BY 1;
+
 -- different ranking functions: row_number(), rank(), dense_rank()
 SELECT customer_id,
   COUNT(*) AS num_rentals,
@@ -179,3 +220,7 @@ FROM actor AS a
   INNER JOIN film_actor AS fa ON a.actor_id = fa.actor_id
   INNER JOIN film AS f ON fa.film_id = f.film_id
 GROUP BY f.title;
+
+-- exercise 16-1
+-- exercise 16-2
+-- exercise 16-3

@@ -14,6 +14,7 @@ done
 
 # sleep 10 for waiting mysql db actually ready
 sleep 10
+docker exec -it sakila-sql /bin/bash -c "mysql -uroot -psakila sakila < /book_data.sql"
 docker exec -it sakila-sql mysql -uroot -psakila --init-command='USE sakila;'
 
 
