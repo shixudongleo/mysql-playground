@@ -17,7 +17,6 @@ The Sakila sample database was initially developed by Mike Hillyer, a former mem
 `sakila-schema.sql` and `sakila-data.sql` are merged into `sakila-all.sql` with schema creation at front.
 This is to make the initilization of MySQL DB easier.
 
-
 ## SQL scripts for Book by chapters
 
 - [ ] [chapter3](chapter.md)
@@ -35,3 +34,8 @@ This is to make the initilization of MySQL DB easier.
 - [ ] [chapter15](chapter.md)
 - [ ] [chapter16](chapter.md)
 
+## SQL Cookbook Data
+
+MySQL 8.0 tables: emp, dept, t1, t10 tables
+
+<https://www.db-fiddle.com/f/xA169myKDJKdhXoV854v18/2>
